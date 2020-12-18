@@ -1,0 +1,12 @@
+{
+    "name" : "EasyLogger",
+	"version" : "0.0.1",
+	"author": {
+		"name": "Pawel Rugor"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"winston" : "^3.3.3",
+		"winston-daily-rotate-file" : "^4.5.0"
+	}
+}
