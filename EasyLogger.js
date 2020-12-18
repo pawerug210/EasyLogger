@@ -13,30 +13,23 @@ var rotatingFileTransport = new transports.DailyRotateFile({
     maxFiles: '14d'
   });
 
-
 const myFormat = printf(({ level, message, label, timestamp }) => {
   return `${timestamp} [${level}] ${message}`;
 });
 
 const logger = createLogger({
-  level: 'info',
+  level: 'debug',
   format: combine(
     format.timestamp({
 	format: 'YYYY-MM-DD HH:mm:ss'}),
     myFormat
   ),
-  defaultMeta: { service: 'user-service' },
   transports: [
-    //
-    // - Write all logs with level `error` and below to `error.log`
-    // - Write all logs with level `info` and below to `combined.log`
-    //
     new transports.Console(),
     rotatingFileTransport
   ],
 });
 
 module.exports = {
-'successlog': logger,
-  // // // 'errorlog': errorlogger
+	'logger': logger,
 };
