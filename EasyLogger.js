@@ -10,11 +10,12 @@ var rotatingFileTransport = new transports.DailyRotateFile({
     filename: '%DATE%.log',
     datePattern: 'YYYY-MM-DD',
     maxSize: '20m',
-    maxFiles: '14d'
+    maxFiles: '14d',
+	dirname: '/home/pi/logs/'
   });
 
 const myFormat = printf(({ level, message, label, timestamp }) => {
-  return `${timestamp} [${level}] ${message}`;
+  return `${timestamp} [${level}] [${label}] ${message}`;
 });
 
 const logger = createLogger({
