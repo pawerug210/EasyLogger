@@ -15,7 +15,10 @@ var rotatingFileTransport = new transports.DailyRotateFile({
   });
 
 const myFormat = printf(({ level, message, label, timestamp }) => {
-  return `${timestamp} [${level}] [${label}] ${message}`;
+	if (label) 		
+		return `${timestamp} [${level}] [${label}] ${message}`;
+	else
+		return `${timestamp} [${level}] ${message}`;
 });
 
 const logger = createLogger({
